@@ -53,7 +53,7 @@ const Cart = (props) => {
   );
   const modalActions = (
     <div className={classes.actions}>
-      <button className={classes["button--alt"]} onClick={props.onClose}>
+      <button className={classes["button--alt"]} onClick={props.onHide}>
         Close
       </button>
       {hasItems && (
@@ -71,7 +71,7 @@ const Cart = (props) => {
         <span>{totalAmount}</span>
       </div>
       {isCheckout && (
-        <Checkout onConfirm={submitOrderHandler} onCancel={props.onClose} />
+        <Checkout onConfirm={submitOrderHandler} onCancel={props.onHide} />
       )}
       {!isCheckout && modalActions}
     </React.Fragment>
@@ -81,7 +81,7 @@ const Cart = (props) => {
     <React.Fragment>
       <p>Successfully sent the order!</p>
       <div className={classes.actions}>
-        <button className={classes.button} onClick={props.onClose}>
+        <button className={classes.button} onClick={props.onHide}>
           Close
         </button>
       </div>
@@ -89,7 +89,7 @@ const Cart = (props) => {
   );
 
   return (
-    <Modal onClose={props.onClose}>
+    <Modal onClose={props.onHide}>
       {!isSubmitting && !didSubmit && cartModalContent}
       {isSubmitting && isSubmittingModalContent}
       {!isSubmitting && didSubmit && didSubmitModalContent}
